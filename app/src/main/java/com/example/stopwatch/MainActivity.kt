@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         // TAG is the default var name for labeling your log statements
         val TAG = "MainActivity"
+        // just for github testing purposes
+        val PHYSICISTS_PI = 3
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
