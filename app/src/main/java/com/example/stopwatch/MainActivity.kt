@@ -10,6 +10,7 @@ import android.widget.Chronometer
 class MainActivity : AppCompatActivity() {
 
     lateinit var stopwatch: Chronometer
+    lateinit var recentLap: Chronometer
     lateinit var buttonStartStop: Button
     lateinit var buttonReset: Button
 
@@ -36,27 +37,25 @@ class MainActivity : AppCompatActivity() {
             if(!isRunning) {
                 isRunning = true
                 buttonStartStop.text = "Stop"
+                buttonReset.text = "Lap"
                 stopwatch.setBase(SystemClock.elapsedRealtime() + timeWhenStopped)
                 stopwatch.start()
             } else {
                 isRunning = false
                 buttonStartStop.text = "Start"
+                buttonReset.text = "Reset"
                 timeWhenStopped = stopwatch.getBase() - SystemClock.elapsedRealtime()
                 stopwatch.stop()
             }
         }
 
         buttonReset.setOnClickListener {
-            stopwatch.setBase(SystemClock.elapsedRealtime())
-            timeWhenStopped = 0L
-
             if(!isRunning) {
-                //reset
-            } else {
-                //reset
-                isRunning = false
-                buttonStartStop.text = "Start"
+                stopwatch.setBase(SystemClock.elapsedRealtime())
+                timeWhenStopped = 0L
                 stopwatch.stop()
+            } else {
+                recentLap.setBase(stopwatch.getBase())
             }
         }
     }
@@ -96,6 +95,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun wireWidgets() {
         stopwatch = findViewById(R.id.chronometer_main_stopwatch)
+        recentLap = findViewById(R.id.chronometer_main_recentLap)
         buttonStartStop = findViewById(R.id.button_main_startStop)
         buttonReset = findViewById(R.id.button_main_reset)
     }
