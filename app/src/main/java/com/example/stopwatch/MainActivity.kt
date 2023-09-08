@@ -34,6 +34,32 @@ class MainActivity : AppCompatActivity() {
     // function that exists in the superclass)
     override fun onStart() {
         super.onStart()
+        Log.d(TAG, "onStart: this is a log")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart: this is a log")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume: this is a log")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause: this is a log")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: this is a log")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: this is a log")
     }
 
     private fun wireWidgets() {
